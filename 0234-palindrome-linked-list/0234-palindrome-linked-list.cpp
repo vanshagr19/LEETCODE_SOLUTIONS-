@@ -32,6 +32,7 @@ public:
         return prev;
     }
     bool isPalindrome(ListNode* head) {
+        if (head->next ==nullptr ) return true;
         ListNode* mid = middle(head);
         ListNode* temp = mid->next;
         mid->next = reverse(temp);
