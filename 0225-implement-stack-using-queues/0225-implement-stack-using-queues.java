@@ -3,28 +3,45 @@ class MyStack {
     public MyStack() {
         q = new LinkedList<>();
     }
-    
     public void push(int x) {
-        q.add(x);
+        if (q.isEmpty()) q.add(x);
+        else{
+            q.add(x);
+            int n = q.size();
+            for(int i = 0 ; i < n-1 ; i++){
+                q.add(q.remove());
+            }
+        }
     }
     
     public int pop() {
-        int n = q.size();
-        for(int i = 0 ; i < n-1 ; i++){
-            q.add(q.remove());
-        }
         return q.remove();
     }
     
     public int top() {
-        int n = q.size();
-        for(int i = 0 ; i < n-1 ; i++){
-            q.add(q.remove());
-        }
-        int front = q.peek();
-        q.add(q.remove());
-        return front;
+        return q.peek();
     }
+    // public void push(int x) {
+    //     q.add(x);
+    // }
+    
+    // public int pop() {
+    //     int n = q.size();
+    //     for(int i = 0 ; i < n-1 ; i++){
+    //         q.add(q.remove());
+    //     }
+    //     return q.remove();
+    // }
+    
+    // public int top() {
+    //     int n = q.size();
+    //     for(int i = 0 ; i < n-1 ; i++){
+    //         q.add(q.remove());
+    //     }
+    //     int front = q.peek();
+    //     q.add(q.remove());
+    //     return front;
+    // }
     
     public boolean empty() {
         return (q.size() == 0);
